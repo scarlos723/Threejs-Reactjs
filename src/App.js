@@ -43,7 +43,7 @@ class App extends Component {
 
   //animation
   animate() {
-    requestAnimationFrame(this.animate);
+    this.id = requestAnimationFrame(this.animate);
 
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.01;
@@ -54,6 +54,11 @@ class App extends Component {
   componentDidMount() {
     document.getElementById("Render").appendChild(this.init());
     this.animate();
+  }
+  
+  componentWillUnmount () {
+    console.log('stop three animation ')
+    this.stopAnimation()
   }
 
   render() {
